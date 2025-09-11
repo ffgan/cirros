@@ -68,6 +68,9 @@ case $GUESTARCH in
         GUESTARCH=ppc64 ;;
     x86_64)
         MACHINE=pc ;;
+    riscv64)
+        MACHINE=virt
+        EXTRA_OPTS="-kernel $RELEASE_DIR/cirros-$VER-riscv64-kernel -initrd $RELEASE_DIR/cirros-$VER-riscv64-initramfs" ;;
 esac
 
 set -x  # show next command

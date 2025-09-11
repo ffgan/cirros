@@ -346,7 +346,7 @@ umount "$mp" && UMOUNT="" ||
 
 case $arch in
     x86_64) grub_options="--grub1 --grub-efi";;
-    arm|aarch64) grub_options="--grub-efi";;
+    arm|aarch64|riscv64) grub_options="--grub-efi";;
     ppc*) grub_options="--grub-ieee";;
     *) grub_options=;;
 esac

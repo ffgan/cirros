@@ -104,6 +104,13 @@ This will do a full buildroot build, which will take a while. The output that Ci
    $ ./bin/grab-kernels "$kver" $ARCH
 ```      
 
+for riscv64,use below version
+```bash
+   $ kver="5.15.0-1028.32"
+   $ ./bin/grab-kernels "$kver" $ARCH
+```
+
+
  * Download EFI grub to use (aarch64, arm, x86_64 only). The grub-efi input to bundle will be in tar.gz format. Version can be taken from https://launchpad.net/ubuntu/+source/grub2 page.
 ```bash
    $ gver="2.06-2ubuntu7"

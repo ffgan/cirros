@@ -82,6 +82,7 @@ parse_modules() {
 		amd64|x86_64) march=",x86_64,x86,";;
 		ppc64|powerpc) march=",powerpc,ppc64,";;
 		arm*) march=",arm,$arch,";;
+		riscv64) march=",riscv64,";;
 		*) march=",$arch,";;
 	esac
 	while read line; do
@@ -120,6 +121,9 @@ case "$1" in
 			echo "${parse_out}" | loadmods ||
 				fail "failed to load modules."
 			if [ "$march" = "ppc64" ]; then
+				sleep 1
+			fi
+			if [ "$march" = "riscv64" ]; then
 				sleep 1
 			fi
 		fi

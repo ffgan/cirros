@@ -22,7 +22,7 @@ source "${0%/*}/common-functions.sh"
 
 burl="https://launchpad.net/ubuntu/+archive/primary/+files/"
 outdir="./download"
-def_arches="x86_64 aarch64 arm"
+def_arches="x86_64 aarch64 arm riscv64"
 
 case "$1" in
     --outdir=*) outdir="${1#*=}"; shift;;
@@ -101,6 +101,12 @@ for arch in "$@"; do
             debarch='armhf'
             pkgarch='arm'
             format='arm-efi'
+            ;;
+	riscv64)
+            efiarch='riscv64'
+            debarch='riscv64'
+            pkgarch='riscv64'
+            format='riscv64-efi'
             ;;
         *) debug 1 "no EFI grub for $arch";;
     esac

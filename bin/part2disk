@@ -203,6 +203,7 @@ if [ $grub_efi -ne 0 ]; then
         x86_64)  efiarch=x64;;
         aarch64) efiarch=aa64;;
         arm)     efiarch=arm;;
+	    riscv64) efiarch=riscv64;;
         *) fail "arch $arch without EFI grub"
     esac
     TMP=$(mktemp -d)
