@@ -92,6 +92,7 @@ kmicro=${kpart#*.*.}
 
 case "$kmajor.$kminor" in
    5.15) echo "Using $kmajor.$kminor kernel from Ubuntu 22.04 release.";;
+   6.8) echo "Using $kmajor.$kminor kernel from Ubuntu 24.04 release.";;
    *) error "WARN: possibly unknown kernel version $kmajor.$kminor.";;
 esac
 
@@ -116,6 +117,9 @@ for arch in "$@"; do
     }
     debs=""
     for epkg in $image $extras; do
+        if [[ $1 == "riscv64" ]];then
+            kver="${kver}.1"
+        fi
         debname="${epkg}-${kmajor}.${kminor}.${kmicro}-${abi}-${flav}_${kver}_${xarch}.deb"
         url="$burl$debname"
         dl "$url" "$outdir/$debname" || fail "failed dl $url"

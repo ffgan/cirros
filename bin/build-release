@@ -30,9 +30,9 @@ shift
 pre=cirros-$VER
 BR_VER="${BR_VER:-2022.02.4}" # WARNING: this may be non-trivial to change
 ARCHES="${ARCHES:-x86_64 arm aarch64 ppc64le riscv64}"
-KVER="${KVER:-5.15.0-117.127}" # Ubuntu 22.04
-GVER="${GVER:-2.06-2ubuntu7.1}" # Ubuntu 22.04 grub2
-GVER_UNSIGNED="${GVER_UNSIGNED:-2.06-2ubuntu14.1}" # Ubuntu 22.04 grub2-unsigned
+KVER="${KVER:-6.8.0-31.31}" # Ubuntu 24.04
+GVER="${GVER:-2.12-1ubuntu7.3}" # Ubuntu 24.04 grub2
+GVER_UNSIGNED="${GVER_UNSIGNED:-2.12-1ubuntu7.3}" # Ubuntu 24.04 grub2-unsigned
 ME=$(readlink -f "$0")
 MY_D=${ME%/*}
 PATH=${MY_D}:$PATH
@@ -200,11 +200,6 @@ kstart=${_RET}
 for arch in ${ARCHES}; do
     format=$(get_grub_format "$arch")
     mkdir -p "$OUT/stage/$arch"
-    if [[ $arch == "riscv64" ]];then
-        kver="5.15.0-1028.32"
-    else
-        kver=$KVER
-    fi
     gver=$(get_grub_version "$arch")
 
     # grab kernel
