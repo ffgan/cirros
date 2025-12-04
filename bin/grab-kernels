@@ -117,9 +117,9 @@ for arch in "$@"; do
     }
     debs=""
     for epkg in $image $extras; do
-        if [[ $1 == "riscv64" ]];then
-            kver="${kver}.1"
-        fi
+        # if [[ $1 == "riscv64" ]];then
+        #     kver="${kver}.1"
+        # fi
         debname="${epkg}-${kmajor}.${kminor}.${kmicro}-${abi}-${flav}_${kver}_${xarch}.deb"
         url="$burl$debname"
         dl "$url" "$outdir/$debname" || fail "failed dl $url"
