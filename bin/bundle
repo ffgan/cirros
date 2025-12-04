@@ -219,6 +219,11 @@ mfound=$(sed -e 's,.*/,,' -e 's,[.]ko$,,' "${kern_modules}" | sort)
 mfound=$(echo $mfound)
 debug 1 "including these modules: $mfound"
 
+morder="${kernel_d}/lib/modules/${kver}/modules.order"
+mbuiltinmodinfo="${kernel_d}/lib/modules/${kver}/modules.builtin.modinfo"
+echo ${morder#${kernel_d}/} >> "${kern_files}"
+echo ${mbuiltinmodinfo#${kernel_d}/} >> "${kern_files}"
+
 tar -C "${kernel_d}" -cpf - \
     --files-from "${kern_files}" > "${kernel_tar}" ||
     fail "failed to collect kernel files"
