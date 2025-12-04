@@ -200,6 +200,7 @@ kstart=${_RET}
 for arch in ${ARCHES}; do
     format=$(get_grub_format "$arch")
     mkdir -p "$OUT/stage/$arch"
+    kver=$KVER
     gver=$(get_grub_version "$arch")
 
     # grab kernel
