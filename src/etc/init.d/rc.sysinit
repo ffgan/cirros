@@ -55,7 +55,12 @@ mkdir /run/var.tmp
 
 hostname -F /etc/hostname
 
-filecap /usr/bin/traceroute NET_RAW
+if [[ $(uname -m) != "riscv64" ]];then
+	# filecap will panic on riscv64
+	filecap /usr/bin/traceroute NET_RAW
+else
+	setcap cap_net_raw+ep /usr/bin/traceroute
+fi
 
 f="/bin/lxc-is-container" && write_lxc_is_container > "$f" && chmod 755 "$f"
 
