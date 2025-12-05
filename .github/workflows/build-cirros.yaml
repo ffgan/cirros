@@ -13,7 +13,7 @@ jobs:
   cirros-build-matrix:
     strategy:
       matrix:
-        arch: [aarch64, arm, x86_64, ppc64le]
+        arch: [aarch64, arm, x86_64, ppc64le, riscv64]
 
     runs-on: ubuntu-22.04
 

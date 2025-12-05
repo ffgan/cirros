@@ -78,8 +78,8 @@ fmt_4_15() {
     case "$xarch" in
         # no big endian kernel or 4.15
         amd64|ppc64el) image="linux-image-unsigned";;
-        arm64|riscv64) :;;
-        armhf) extras="linux-modules";;
+        arm64) :;;
+        armhf|riscv64) extras="linux-modules";;
     esac
 }
 
